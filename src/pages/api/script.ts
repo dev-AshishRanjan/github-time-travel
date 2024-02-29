@@ -26,9 +26,10 @@ export default function handler(
     // exec command to create repo using github
   }
 
-  exec(`bash ./backend/run.sh ${username} ${repo} ${no_of_days} ${past}`, (error, stdout, stderr) => {
+  exec(`bash /backend/run.sh ${username} ${repo} ${no_of_days} ${past}`, (error, stdout, stderr) => {
     if (error) {
       console.error("Got an Error : ", stderr);
+      res.status(501).json({ msg: stderr });
     }
     console.log({ stdout });
     res.status(200).json({ msg: "Successfull" });
