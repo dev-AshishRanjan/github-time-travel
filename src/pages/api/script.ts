@@ -25,7 +25,7 @@ export default function handler(
   if (repo === null || repo === undefined) {
     // exec command to create repo using github
   }
-  const scriptPath = path.join(__dirname, '../../../public/backend/run.sh');
+  const scriptPath = path.join(__dirname, '../../../../public/backend/run.sh');
   exec(`bash ${scriptPath} ${username} ${repo} ${no_of_days} ${past}`, (error, stdout, stderr) => {
     if (error) {
       console.error("Got an Error : ", stderr);
