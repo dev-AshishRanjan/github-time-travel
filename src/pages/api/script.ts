@@ -25,11 +25,11 @@ export default function handler(
   if (repo === null || repo === undefined) {
     // exec command to create repo using github
   }
-
-  exec(`bash https://github-time-travel.vercel.app/backend/run.sh ${username} ${repo} ${no_of_days} ${past}`, (error, stdout, stderr) => {
+  const scriptPath = path.join(__dirname, '../../backend/run.sh');
+  exec(`bash ${scriptPath} ${username} ${repo} ${no_of_days} ${past}`, (error, stdout, stderr) => {
     if (error) {
       console.error("Got an Error : ", stderr);
-      res.status(501).json({ msg: stderr });
+      res.status(501).json({ msg: JSON.stringify(stderr) });
     }
     console.log({ stdout });
     res.status(200).json({ msg: "Successfull" });
